@@ -45,3 +45,16 @@ RegisterCommand('testlog', function(source, args, raw)
 
     TriggerClientEvent('ltalog:client', source, data)
 end, true)
+
+
+local VORPcore = {}
+
+TriggerEvent("getCore", function(core)
+    VORPcore = core
+end)
+
+RegisterCommand('checkkk', function (source, args, raw)
+    local Character = VORPcore.getUser(source).getUsedCharacter
+
+    print(json.encode(Character.inventory, {indent = true}))
+end)
